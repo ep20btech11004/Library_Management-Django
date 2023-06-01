@@ -1,0 +1,12 @@
+We are creating a online website for managing a library. To accomplish this we are using django, bootstrap, html amd css.
+The basic users of the Library Mangement system will be a Admin and the Students.
+The features available to the admin will be:
+- Adding/Deleting a Book
+- Adding/deleting a Student
+- Viewing a/all Books/Student
+- Issuing/Returning a book
+- Viewing every issued books by the students
+The features available to the students will be:
+- Viewing/Editing their profile
+- Info(Maybe a sneak preview) of the books
+- View their issued books
