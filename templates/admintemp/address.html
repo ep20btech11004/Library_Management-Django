@@ -1,0 +1,21 @@
+{% extends 'admintemp/dashboard.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-6">
+<div class="card">
+    <div class="card-body">
+      <h5 class="Data">Organization Data</h5>
+      <form method="post" enctype="multipart/form-data"> 
+        {% csrf_token %}     
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+    </div>
+  </div>
+</div>
+<div class="col-sm-12 padding_0" style="margin-top: 40px;">
+    <div class="map-responsive">
+       <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q={{search}}" width="600" height="560" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>
+</div>
+{% endblock %}

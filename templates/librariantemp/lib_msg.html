@@ -1,0 +1,16 @@
+{% extends 'librariantemp/dashboard.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-6">
+<div class="card">
+    <div class="card-body">
+      <h5 class="Data">New Message</h5>
+      <form method="post" enctype="multipart/form-data"> 
+        {% csrf_token %}     
+        {{form|crispy}}
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

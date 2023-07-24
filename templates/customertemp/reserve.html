@@ -1,0 +1,73 @@
+{% extends 'customertemp/dashboard.html' %}
+{% load static %}
+{% block content %}
+{% if messages %}
+<div>
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+</div>
+{% endif %}
+<div class="product-details ptb-100 pb-90">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-7 col-12">
+                <div class="product-details-5 pr-70">
+                    <img src="{{book.image.url}}" style="height:700px; width:550px;" alt="">
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-5 col-12">
+                <div class="sidebar-active product-details-content is-affixed" style="position: relative;">
+                    <div class="inner-wrapper-sticky"
+                         style="position: relative; transform: translate3d(0px, 43px, 0px);">
+                        <h3>{{book.name}}</h3>
+                        <h4>{{book.author}}</h4>
+
+                        <p> {{book.description}}</p>
+
+                        <div class="product-details-cati-tag mt-35">
+                            <ul>
+                                <li class="categories-title">Genre:</li>
+                                <li><p>{{book.genre}}</p></li>
+                            </ul>
+                            <ul>
+                                <li class="categories-title">Language:</li>
+                                <li><p>{{book.lang}}</p></li>
+                            </ul>
+
+                        </div>
+
+                        <div class="product-size-2">
+                            <h4 class="details-title">Availability</h4>
+                            <div class="product-size-style2">
+                                <p>{{avail|yesno:'Available,Not Available'}}</p>
+
+                            </div>
+                        </div>
+                        <div class="product-size-2">
+                            <h4 class="details-title">Release Date</h4>
+                            <div class="product-size-style2">
+                                <p>{{book.rel_date}}</p>
+
+                            </div>
+                        </div>
+                        <div class="quickview-plus-minus">
+
+                            <div class="quickview-btn-cart">
+                                <form method="post" action = "#" >{% csrf_token %}
+                                <button type = "submit" class="btn btn-primary">Reserve Book</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

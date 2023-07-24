@@ -1,0 +1,58 @@
+{% extends 'librariantemp/dashboard.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-12">
+    <div><h2>Issued Books</h2></div>
+    {% for i in data1 %}
+    <div class="col-lg-3" style="float: left;">
+        <div class ="cardOpt2">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <div><h5 class="Data">{{i.book.name}}</h5></div>
+                <div><img src = "{{i.book.image.url}}" width = "200" height="200"></div>
+                <div><span>Author:  {{i.book.author}}</span></div>            
+                </div>
+    
+                <div class="flip-card-back">
+                    <div><span>{{i.book.lang}},{{i.book.genre}}</span></div>
+                    <div><span>Release Date: {{i.book.rel_date}}</span></div>
+                    <div><span>ISBN No: {{i.book.isbn}}</span></div>
+                    <p>{{i.book.description}}</p>
+                </div>           
+            </div>
+        </div>
+        </div>
+        </div>
+    {% empty %}
+    <h3>No Issued Books</h3>
+    {% endfor %}    
+</div>
+<div class="col-lg-12" style="margin-top: 20px;">
+    <div><h2>Reserved Books</h2></div>
+    {% for i in data2 %}
+    <div class="col-lg-3" style="float: left;">
+        <div class ="cardOpt2">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <div><h5 class="Data">{{i.book.name}}</h5></div>
+                <div><img src = "{{i.book.image.url}}" width = "200" height="200"></div>
+                <div><span>Author:  {{i.book.author}}</span></div>            
+                </div>
+    
+                <div class="flip-card-back">
+                    <div><span>{{i.book.lang}},{{i.book.genre}}</span></div>
+                    <div><span>Release Date: {{i.book.rel_date}}</span></div>
+                    <div><span>ISBN No: {{i.book.isbn}}</span></div>
+                    <p>{{i.book.description}}</p>
+                </div>           
+            </div>
+        </div>
+        </div>
+        </div>
+    {% empty %}
+    <h3>No Reserved Books</h3>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'librariantemp/dashboard.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="col-lg-12">
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert" style="margin-top: 10px;">
+        <h5>{{message}}</h5>
+    </div>
+    {% endfor %}
+    <div class="col-lg-12" style="margin-bottom: 30px;">
+        <form method="get">
+            <div class="nav-item d-flex align-items-center">
+                <i class="bx bx-search fs-4 lh-0"></i>
+                {{itemFilter.form }}
+            </div>
+        </form>
+    </div>
+    {% for i in data %}
+    <!-- {{forloop.counter}} -->
+    <div class="col-lg-3" style="float:left">
+    <div class ="cardOpt2">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+            <div><h5 class="Data" style="margin-top: 5px;">{{i.name}}</h5></div>
+            <div><img src = "{{i.image.url}}" width = "200" height="200"></div>
+            <div><span>Roll no:  {{i.roll_no}}</span></div> 
+            <div><span>Email:  {{i.email}}</span></div>                       
+            </div>
+
+            <div class="flip-card-back">
+                <div style="margin-top: 10px;"><span>{{i.gender}}</span></div>
+                <div><span>Age: {{i.age}}</span></div>
+                <div><span>Fine: {{i.fine}}</span></div>
+                <div><p> </p></div>
+                <div><a class="btn btn-primary" href= "{% url 'pay_fine' i.id %}">Fine Payment</a>
+                </div>
+                <div><p> </p></div>
+                <div><a class="btn btn-primary" href= "{% url 'cust_books' i.id %}">Issued & Reserved Books</a>
+                </div>
+            </div>           
+        </div>
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

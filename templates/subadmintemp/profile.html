@@ -1,0 +1,15 @@
+{% extends 'subadmintemp/dashboard.html' %}
+{% load static %}
+{% block content %}
+<div class="col-lg-12" style="margin-top: 150px;">
+    <div class="text-center">
+        <div><h2 class="Data">{{data.name}}</h2></div>
+        <div style="margin: 20px;"><img src = "{{data.image.url}}" width = "200" class="rounded-circle"></div>
+        <div><h3>Username: {{data.user.username}}</h3></div>
+        <div><h5>Organization:  {{data.organization}}</h5></div>
+        <div><span style="margin-right: 10px;"><h5>Age:  {{data.age}}</span><span style="margin-left: 20px;">Gender:  {{data.gender}}</h5></span></div>
+        <div><img src="{% static 'assets/images/call-icon.png' %}"><span style="margin-left: 5px;">Phone : {{data.contact}}</span></div>
+        <div style="margin-top: 10px;"><img src="{% static 'assets/images/email-icon.png' %}"><span style="margin-left: 5px;">Email : {{data.email}}</span></div>
+    </div>
+</div>
+{% endblock %}

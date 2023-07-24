@@ -1,0 +1,18 @@
+{% extends 'subadmintemp/dashboard.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    {% for i in msg %}
+    <div class="col-lg-12" style="margin-bottom: 20px;">    
+    <div class="card">
+    <div class ="card-body">
+            <div><h5 class="Data">{{i.sender}}</h5></div>
+            <div>{{i.message}}</div>
+            <div><span>Contact:  {{i.contact}}</span></div>
+            <div><span>{{i.time}}</span></div>            
+    </div>
+    </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}
