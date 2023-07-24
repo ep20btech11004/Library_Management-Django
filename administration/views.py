@@ -17,7 +17,7 @@ def index(request):
         data = Book.objects.all().order_by('rel_date')[0]
         data1 = Book.objects.all().order_by('rel_date')[1:4]
     elif Book.objects.count ==1:
-        data = Book.objects.all().order_by('rel_date')[0]
+        data = Book.objects.all().first()
     else:
         data = Book.objects.all().first()
         data1 = Book.objects.all().order_by('rel_date')[1:]

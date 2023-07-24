@@ -54,13 +54,13 @@
                             </div>
                         </div>
                         <div class="quickview-plus-minus">
-
+                            {% if avail %}
                             <div class="quickview-btn-cart">
                                 <form method="post" action = "#" >{% csrf_token %}
                                 <button type = "submit" class="btn btn-primary">Reserve Book</button>
                                 </form>
                             </div>
-
+                            {% endif %}
                         </div>
                     </div>
                 </div>
