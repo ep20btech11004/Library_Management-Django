@@ -19,18 +19,20 @@ def index(request):
     elif Book.objects.count ==1:
         data = Book.objects.all().order_by('rel_date')[0]
     else:
-        data = Book.objects.all().order_by('rel_date').last()
+        data = Book.objects.all().first()
         data1 = Book.objects.all().order_by('rel_date')[1:]
 
     if Organization.objects.all().exists() == False:
         search = "India"
     else:
-        data = Organization.objects.last()
-        search = ("+".join([data.name, data.building, data.city, data.state, data.country])).replace(' ', '+')
+        loc = Organization.objects.last()
+        search = ("+".join([loc.name, loc.building, loc.city, loc.state, loc.country])).replace(' ', '+')
 
     if request.method == 'POST':
         msg = Message.objects.create(receiver = Login.objects.first(), contact = int(request.POST.get('contact')) ,message = request.POST.get('message'), time = datetime.datetime.now())
         return redirect('/')
+    print(data)
+    print(data1)
     return render(request, 'index.html', {'data':data, 'data1':data1, 'search':search})
 
 def login_view(request):
@@ -462,9 +464,10 @@ def issue(request,id):
     cop = bk.copies
     if cop == 0:
         avail = False
+        roll = None
     else:
         avail = True
-    roll = IntForm()
+        roll = IntForm()
     if request.method == 'POST':
         try:
             conf = Configure.objects.last()
@@ -499,7 +502,10 @@ def issue_book(request):
             return redirect('issue_book')
         if Reserve.objects.filter(user = st.user, book = bk, status = "ISSUED").exists():
             messages.info(request, "Record Already Exists")
-            return redirect('view_books')
+            return redirect('issue_book')
+        if bk.copies == 0:
+            messages.info(request, "No Copies Available")
+            return redirect('issue_book')
         rs = Reserve.objects.create(user = st.user, book = bk, valid_till = datetime.date.today() + datetime.timedelta(days = conf.issue_till), status ="ISSUED")
         if Reserve.objects.filter(user = st.user, book = bk, status = "RESERVED").exists():
             Reserve.objects.get(user = st.user, book = bk, status = "RESERVED").delete()
@@ -574,7 +580,7 @@ def lib_msg(request):
         if request.method == 'POST':
             form = MessageForm(request.POST)
             if form.is_valid():
-                msg = Message.objects.createMessage.objects.create(sender = request.user, receiver = Login.objects.get(id = form['receiver'].value()), contact = form['contact'].value(), message = form['message'].value(), time = datetime.datetime.now())
+                msg = Message.objects.create(sender = request.user, receiver = Login.objects.get(id = form['receiver'].value()), contact = form['contact'].value(), message = form['message'].value(), time = datetime.datetime.now())
             return redirect('lib_msg_sent')
         return render(request, 'librariantemp/lib_msg.html', {'form':form})
 

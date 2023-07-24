@@ -45,7 +45,7 @@
                     <td>{{i.genre}}</td>
                     <td>{{i.lang}}</td>
                     <td>{{i.rel_date}}</td>
-                    <td>{{i.description}}</td>
+                    <td><div style="overflow: auto; width: 150px; height: 50px;">{{i.description}}</div></td>
                     <td><img src = "{{i.image.url}}" width = "100" height="100"></td>
                     <td><a class="btn btn-primary" href="{% url 'edit_book' i.id %}">Edit</a>
                         <a class="btn btn-primary" href="{% url 'delete_book' i.id %}">Delete</a>

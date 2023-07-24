@@ -41,7 +41,7 @@ class SubAdminForm(forms.ModelForm):
 
     class Meta:
         model = SubAdmin
-        fields = ('name', 'contact', 'age', 'gender', 'organization', 'email', 'image') 
+        fields = ('name', 'contact', 'age', 'gender', 'email', 'image') 
 
 class LibrarianForm(forms.ModelForm):
     gender = forms.ChoiceField(choices = gender_choices, widget = forms.RadioSelect)

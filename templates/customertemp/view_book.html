@@ -44,7 +44,7 @@
                 <div style="margin-top: 10px;"><span>{{i.lang}},{{i.genre}}</span></div>
                 <div><span>Release Date: {{i.rel_date}}</span></div>
                 <div><span>ISBN No: {{i.isbn}}</span></div>
-                <p>{{i.description}}</p>
+                <div style="overflow: auto;"><p>{{i.description}}</p></div>
                 <div><a href= "{% url 'reserve_book' i.id %}" class="btn btn-primary">Reserve Book</a></div>
             </div>           
         </div>

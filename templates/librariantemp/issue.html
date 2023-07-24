@@ -20,9 +20,7 @@
                          style="position: relative; transform: translate3d(0px, 43px, 0px);">
                         <h3>{{book.name}}</h3>
                         <h4>{{book.author}}</h4>
-
-                        <p> {{book.description}}</p>
-
+                        <div style="overflow: auto; width: 400px;"><p> {{book.description}}</p></div>
                         <div class="product-details-cati-tag mt-35">
                             <ul>
                                 <li class="categories-title">Genre:</li>
@@ -50,14 +48,14 @@
                             </div>
                         </div>
                         <div class="quickview-plus-minus">
-
+                            {% if avail %}
                             <div class="quickview-btn-cart">
                                 <form method="post" action = "#" >{% csrf_token %}
                                     <input type="number" id="roll" name="roll" placeholder="Enter Roll No"> 
                                     <button type = "submit" class="btn btn-primary">Issue Book</button>
                                 </form>
                             </div>
-
+                            {% endif %}
                         </div>
                     </div>
                 </div>
