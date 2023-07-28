@@ -31,8 +31,6 @@ def index(request):
     if request.method == 'POST':
         msg = Message.objects.create(receiver = Login.objects.first(), contact = int(request.POST.get('contact')) ,message = request.POST.get('message'), time = datetime.datetime.now())
         return redirect('/')
-    print(data)
-    print(data1)
     return render(request, 'index.html', {'data':data, 'data1':data1, 'search':search})
 
 def login_view(request):
